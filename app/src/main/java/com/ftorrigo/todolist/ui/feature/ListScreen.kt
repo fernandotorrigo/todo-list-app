@@ -1,6 +1,5 @@
 package com.ftorrigo.todolist.ui.feature
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -24,16 +23,23 @@ import com.ftorrigo.todolist.ui.components.TodoItem
 import com.ftorrigo.todolist.ui.theme.TodoListTheme
 
 @Composable
-fun ListScreen(modifier: Modifier = Modifier) {
-
+fun ListScreen(
+    navigateToAddEditItemScreen: (id: Long?) -> Unit,
+) {
+    ListContent(
+        todos = emptyList(),
+        onAddItemClick = navigateToAddEditItemScreen
+    )
 }
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ListContent(todos: List<Todo>) {
+fun ListContent(
+    todos: List<Todo>,
+    onAddItemClick: (id: Long?) -> Unit
+) {
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(onClick = {}) {
+            FloatingActionButton(onClick = { onAddItemClick(null) }) {
                 Icon(Icons.Default.Add, contentDescription = "Add")
             }
         }
@@ -65,7 +71,8 @@ fun ListContentPreview(modifier: Modifier = Modifier) {
                 todo1,
                 todo2,
                 todo3,
-            )
+            ),
+            onAddItemClick = {}
         )
     }
 

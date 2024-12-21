@@ -21,7 +21,7 @@ import com.ftorrigo.todolist.ui.theme.TodoListTheme
 
 @Composable
 fun AddEditScreen(modifier: Modifier = Modifier) {
-
+    AddEditContent()
 }
 
 @Composable
