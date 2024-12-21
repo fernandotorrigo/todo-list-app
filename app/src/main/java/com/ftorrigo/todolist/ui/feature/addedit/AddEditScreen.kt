@@ -30,6 +30,7 @@ import com.ftorrigo.todolist.ui.theme.TodoListTheme
 
 @Composable
 fun AddEditScreen(
+    id: Long? = null,
     navigateBack: () -> Unit
 ) {
 
@@ -39,7 +40,7 @@ fun AddEditScreen(
         dao = database.todoDao
     )
     val viewModel = viewModel<AddEditViewModel> {
-        AddEditViewModel(repository = repository)
+        AddEditViewModel(repository = repository, id = id)
     }
 
     val title = viewModel.title

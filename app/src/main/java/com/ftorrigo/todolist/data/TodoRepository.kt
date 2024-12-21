@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface TodoRepository {
 
-    suspend fun insert(title: String, description: String?)
+    suspend fun insert(title: String, description: String?, id: Long? = null)
 
     suspend fun updateCompleted(id: Long, isCompleted: Boolean)
 
@@ -13,5 +13,5 @@ interface TodoRepository {
 
     fun getAll(): Flow<List<Todo>>
 
-    fun getById(id: Long): Todo?
+    suspend fun getById(id: Long): Todo?
 }
